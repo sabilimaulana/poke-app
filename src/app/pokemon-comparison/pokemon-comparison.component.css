@@ -1,0 +1,81 @@
+.pokemon-comparison-page {
+}
+
+.header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  height: 400px;
+  margin: 20px 0;
+}
+
+.pokemon-detail {
+  border-radius: 12px;
+  border: 1px dotted black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-transform: capitalize;
+}
+
+.pokemon-detail img {
+  width: 100px;
+  height: 100px;
+}
+
+.list {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 0 20px;
+}
+
+.pokemons {
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  row-gap: 20px;
+  row-gap: 20px;
+}
+
+.pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dadde2;
+  color: black;
+  cursor: pointer;
+  transition: 300ms;
+  padding: 16px;
+  border-radius: 8px;
+  text-transform: capitalize;
+}
+
+.pokemon:hover {
+  transform: scale(1.05);
+  opacity: 0.7;
+}
+
+.pokemon > img {
+  height: 120px;
+  width: 120px;
+}
+
+.load-more {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.stats-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

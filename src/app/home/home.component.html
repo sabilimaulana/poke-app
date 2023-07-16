@@ -1,0 +1,38 @@
+<div class="home-container">
+  <header>
+    <h1>Pokemon App - Sabili Maulana</h1>
+  </header>
+
+  <div class="menu">
+    <h3>Menu</h3>
+
+    <ul class="list">
+      <li class="list-item">Compare Pokemon</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3>List of Monsters</h3>
+
+    <div class="pokemons">
+      <div
+        *ngFor="let pokemon of pokemons"
+        (click)="toPokemonDetailPage(pokemon)"
+        class="pokemon"
+      >
+        <img [src]="getPokemonImgUrl(pokemon)" [alt]="pokemon.name" />
+        <p>
+          {{ pokemon.name }}
+        </p>
+      </div>
+    </div>
+
+    <div *ngIf="loading">Loading...</div>
+    <div
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [scrollWindow]="true"
+      (scrolled)="onScroll()"
+    ></div>
+  </div>
+</div>

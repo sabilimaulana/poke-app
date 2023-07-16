@@ -1,0 +1,149 @@
+<div class="pokemon-comparison-page">
+  <div class="header">
+    <!-- Selected Pokemon 1 -->
+    <div>
+      <div *ngIf="selectedPokemons[0]" class="pokemon-detail">
+        <header>
+          <img
+            [src]="selectedPokemons[0].sprites.other.dream_world.front_default"
+            [alt]="selectedPokemons[0].name"
+          />
+          <h2>{{ selectedPokemons[0].name }}</h2>
+        </header>
+
+        <div>
+          <p>
+            HP:
+            {{ getPokemonBaseStat(selectedPokemons[0], "hp") }}
+          </p>
+          <p>
+            Attack:
+            {{ getPokemonBaseStat(selectedPokemons[0], "attack") }}
+          </p>
+          <p>
+            Defense:
+            {{ getPokemonBaseStat(selectedPokemons[0], "defense") }}
+          </p>
+          <p>
+            Special Attack:
+            {{ getPokemonBaseStat(selectedPokemons[0], "special-attack") }}
+          </p>
+          <p>
+            Special Defense:
+            {{ getPokemonBaseStat(selectedPokemons[0], "special-defense") }}
+          </p>
+          <p>
+            Speed:
+            {{ getPokemonBaseStat(selectedPokemons[0], "speed") }}
+          </p>
+        </div>
+      </div>
+
+      <div *ngIf="!selectedPokemons[0]" class="pokemon-detail">
+        Select pokemon from List of Monsters 1 first.
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="stats-chart">
+      <h3>Comparison</h3>
+
+      <canvas
+        baseChart
+        [datasets]="statsChartDatasets"
+        [options]="statsChartOptions"
+        [labels]="statsChartLabels"
+        [type]="'radar'"
+      >
+      </canvas>
+    </div>
+
+    <!-- Selected Pokemon 2 -->
+    <div>
+      <div *ngIf="selectedPokemons[1]" class="pokemon-detail">
+        <header>
+          <img
+            [src]="selectedPokemons[1].sprites.other.dream_world.front_default"
+            [alt]="selectedPokemons[1].name"
+          />
+          <h2>{{ selectedPokemons[1].name }}</h2>
+        </header>
+
+        <div>
+          <p>
+            HP:
+            {{ getPokemonBaseStat(selectedPokemons[1], "hp") }}
+          </p>
+          <p>
+            Attack:
+            {{ getPokemonBaseStat(selectedPokemons[1], "attack") }}
+          </p>
+          <p>
+            Defense:
+            {{ getPokemonBaseStat(selectedPokemons[1], "defense") }}
+          </p>
+          <p>
+            Special Attack:
+            {{ getPokemonBaseStat(selectedPokemons[1], "special-attack") }}
+          </p>
+          <p>
+            Special Defense:
+            {{ getPokemonBaseStat(selectedPokemons[1], "special-defense") }}
+          </p>
+          <p>
+            Speed:
+            {{ getPokemonBaseStat(selectedPokemons[1], "speed") }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <!-- List Pokemon 1 -->
+    <div class="list">
+      <h3>List of Monsters 1</h3>
+
+      <div class="pokemons">
+        <div
+          *ngFor="let pokemon of pokemons"
+          class="pokemon"
+          (click)="selectPokemon(pokemon.name, 1)"
+        >
+          <img [src]="getPokemonImgUrl(pokemon)" [alt]="pokemon.name" />
+          <p>
+            {{ pokemon.name }}
+          </p>
+        </div>
+      </div>
+
+      <div class="load-more">
+        <div *ngIf="loading">Loading...</div>
+        <button *ngIf="!loading" (click)="onLoadMore()">Load More</button>
+      </div>
+    </div>
+
+    <!-- List Pokemon 2 -->
+    <div class="list">
+      <h3>List of Monsters 2</h3>
+
+      <div class="pokemons">
+        <div
+          *ngFor="let pokemon of pokemons"
+          class="pokemon"
+          (click)="selectPokemon(pokemon.name, 2)"
+        >
+          <img [src]="getPokemonImgUrl(pokemon)" [alt]="pokemon.name" />
+          <p>
+            {{ pokemon.name }}
+          </p>
+        </div>
+      </div>
+
+      <div class="load-more">
+        <div *ngIf="loading">Loading...</div>
+        <button *ngIf="!loading" (click)="onLoadMore()">Load More</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="pokemon-detail-page">
+  <div *ngIf="pokemon" class="pokemon-detail">
+    <header class="header">
+      <img
+        [src]="pokemon.sprites.other.dream_world.front_default"
+        [alt]="pokemon.name"
+      />
+      <h2>{{ pokemon.name }}</h2>
+    </header>
+
+    <div class="data">
+      <div class="information">
+        <h3>Information</h3>
+
+        <p>
+          Name: <span>{{ pokemon.name }}</span>
+        </p>
+
+        <p>
+          Height:
+          <span>
+            {{ pokemon.height }}
+          </span>
+        </p>
+        <p>
+          Weight:
+          <span>
+            {{ pokemon.weight }}
+          </span>
+        </p>
+        <div>
+          <p>Types:</p>
+        </div>
+        <ul>
+          <li *ngFor="let type of pokemon.types">{{ type.type.name }}</li>
+        </ul>
+      </div>
+
+      <div class="stats">
+        <h3>Statistic</h3>
+
+        <canvas
+          baseChart
+          [datasets]="statsChartDatasets"
+          [options]="statsChartOptions"
+          [labels]="statsChartLabels"
+          [type]="'radar'"
+        >
+        </canvas>
+      </div>
+
+      <div class="abilities">
+        <h3>Abilities</h3>
+
+        <ul>
+          <li *ngFor="let ability of pokemon.abilities">
+            <span style="text-transform: capitalize">
+              {{ ability.ability.name }} :
+            </span>
+            {{ getPokemonAbilityDesc(ability) }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!pokemon">Loading...</div>
+</div>
