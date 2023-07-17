@@ -36,6 +36,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/pokemon', pokemon.name]);
   }
 
+  toPokemonComparisonPage() {
+    this.router.navigate(['/pokemon-comparison']);
+  }
+
   onScroll() {
     if (this.loading) return;
     this.fetchPokemons();

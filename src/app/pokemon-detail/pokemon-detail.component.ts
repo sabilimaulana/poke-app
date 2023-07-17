@@ -81,7 +81,7 @@ export class PokemonDetailComponent implements OnInit {
       (entry: PokemonEffectEntry) => entry.language.name === 'en'
     )[0];
 
-    return ability.ability.name + ': ' + entry.short_effect;
+    return entry.short_effect;
   }
 
   private getPokemonStatsDatasets(pokemon: Pokemon): StatsDatasets {
